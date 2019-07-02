@@ -59,7 +59,7 @@ function add(msg, model) {
   const meals = [...model, meal];
   return {
     ...model,
-    meal,
+    meals,
     nextId: nextId + 1,
     description: '',
     calories: 0,
