@@ -5,7 +5,9 @@ import {
   showFormMsg,
   mealInputMsg,
   caloriesInputMsg,
-  saveMealMsg
+  saveMealMsg,
+  deleteMealMsg,
+  editMealMsg
 } from './Update';
 
 const {
@@ -21,7 +23,8 @@ const {
   tbody,
   tr,
   th,
-  td
+  td,
+  i
 } = hh(h);
 
 function fieldSet(labelText, inputValue, oninput) {
@@ -99,7 +102,16 @@ function mealRow(dispatch, className, meal) {
   return tr({ className }, [
     cell(td, 'pa2', meal.description),
     cell(td, 'pa2 tr', meal.calories),
-    cell(td, 'pa2 tr', [])
+    cell(td, 'pa2 tr', [
+      i({
+        className: 'ph1 fa fa-trash-o pointer',
+        onclick: () => dispatch(deleteMealMsg(meal.id))
+      }),
+      i({
+        className: 'ph1 fa fa-pencil-square-o pointer',
+        onclick: () => dispatch(editMealMsg(meal.id))
+      })
+    ])
   ]);
 }
 
